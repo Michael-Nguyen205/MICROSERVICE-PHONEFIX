@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'/>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .email-container {
+            background-color: #ffffff;
+            margin: 0 auto;
+            padding: 20px;
+            max-width: 600px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 8px 8px 0 0;
+        }
+        .content {
+            padding: 20px;
+        }
+        .content h2 {
+            color: #333;
+        }
+        .content p {
+            color: #666;
+            line-height: 1.5;
+        }
+        .footer {
+            text-align: center;
+            padding: 10px 0;
+            color: #aaa;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+<div class="email-container">
+    <div class="header">
+        <h1>Email Notification</h1>
+    </div>
+    <div class="content">
+        <h2>Dear <span th:text="${customerName}">Customer</span>,</h2>
+        <p>We would like to inform you about the following details regarding your phone fix:</p>
+        <p><strong>Customer Name:</strong> <span th:text="${customerName}"></span></p>
+        <p><strong>Customer Email:</strong> <span th:text="${customerEmail}"></span></p>
+        <p><strong>Customer Phone Number:</strong> <span th:text="${customerPhoneNumber}"></span></p>
+        <p><strong>Details of Error:</strong></p>
+        <p th:text="${detailsError}"></p>
+        <p>If you have any further questions, feel free to contact us.</p>
+        <p>Best regards,</p>
+        <p>Your Company</p>
+    </div>
+    <div class="footer">
+        <p>© 2024 Your Company. All rights reserved.</p>
+    </div>
+</div>
+</body>
+</html>

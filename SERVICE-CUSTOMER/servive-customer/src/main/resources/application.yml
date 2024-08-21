@@ -1,0 +1,51 @@
+server:
+  port: 9006
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  logging:
+    level:
+      org:
+        axonframework: DEBUG
+        springframework: DEBUG
+
+  application:
+    name: servive-customer
+  data:
+    mongodb:
+      uri: mongodb://localhost:27019/customsDb
+
+
+  zipkin:
+    base-url: http://localhost:9411
+
+  sleuth:
+    sampler:
+      probability: 1.0
+
+axon:
+  serializer:
+    general: xstream
+    message: xstream
+    events: xstream
+
+  axonserver:
+    server: localhost:8024
+    token: Khanh  # Đảm bảo token chính xác
+    # context: my-context
+
+  command-handling:
+    mode: async
+
+  eventhandling:
+    processors:
+      yourProcessorName:
+        mode: tracking
+
+#  eventstore:
+#    mongodb:
+#      uri: mongodb://localhost:27019/phoneDb
+
+  saga:
+    mode: tracking

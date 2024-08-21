@@ -1,0 +1,27 @@
+server:
+  port: 8001
+
+spring:
+  application:
+    name: common-service
+
+
+axon:
+  axonserver:
+    server: localhost:8024
+    # Nếu cần, thêm token và context vào đây
+    # token: my-access-token
+    # context: my-context
+
+  command-handling:
+    mode: async
+
+  eventhandling:
+    processors:
+      yourProcessorName:
+        mode: tracking
+
+
+
+  saga:
+    mode: tracking

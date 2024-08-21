@@ -1,0 +1,33 @@
+#spring:
+#  application:
+#    name: notifycation-service
+#
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#    consumer:
+#      group-id: custumerId-1
+#
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      properties:
+#        spring.json.trusted.packages: "*"
+#      value-serializer = 
+#      auto-offset-reset: earliest
+#
+#  mail:
+#    default-encoding: UTF-8
+#    host: smtp.gmail.com
+#    username: your_gmail
+#    password: knubrmt1vpaqqfzz
+#    port: 587
+#    protocol: smtp
+#    test-connection: false
+#    properties:
+#      mail:
+#        smtp:
+#          auth: true
+#          starttls:
+#            enable: true
+#
+#server:
+#  port: 4699

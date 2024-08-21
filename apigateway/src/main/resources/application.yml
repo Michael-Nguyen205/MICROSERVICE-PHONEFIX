@@ -1,0 +1,84 @@
+server:
+  port: 9001
+
+jwt:
+  secret: L7qNvHLfGIE+pLGRecsOl1/ZUS7ky8MGHh7URUtvC9p3NFF8cRGTnMXzipHjWKcGrZAs7KX+rbMjexgVECGugQ==
+  expiration: 3600000 # Thay đổi giá trị này nếu cần
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes:
+         # ------------------------------------------
+
+        - id: service-fixphone
+          uri: http://localhost:7001
+          predicates:
+            - Path=/api/v1/phonefix/getFixPhone/{id}
+            - Method=GET
+
+#
+#          filters:
+#            - name: AuthFilter
+              # staff staffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaff
+
+        # ------------------------------------------
+
+        - id: service-fixphone
+          uri: http://localhost:7001
+          predicates:
+            - Path=/api/v1/phonefix/getAllFixPhone
+            - Method=GET
+
+
+
+
+            # ------------------------------------------
+
+        # staff staffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaffstaff
+        - id: service-fixphone
+          uri: http://localhost:7004
+          predicates:
+             - Path=/api/v1/phonefix
+             - Method=POST
+
+#          filters:
+#          - name: AuthFilter
+        # ------------------------------------------
+
+        # admin adminadminadminadminadminadminadminadminadminadminadminadminadminadminadminadmin
+        - id: service-phones
+          uri: http://localhost:7002
+          predicates:
+            - Path=/api/v1/phone
+            - Method=POST
+
+#          filters:
+#          - name: AuthFilter
+        # ------------------------------------------
+        - id: borrowservice
+          uri: http://localhost:9003
+          predicates:
+            - Path=/api/v1/borrowing/**
+#          filters:
+#            - AuthFilter
+       # ------------------------------------------
+
+      default-filters:
+        - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+              allowedOrigins: "*"
+              allowedMethods: "*"
+              allowedHeaders: "*"
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8762/eureka/
+    register-with-eureka: true
+    fetch-registry: true
+

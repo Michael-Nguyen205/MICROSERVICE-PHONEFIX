@@ -1,0 +1,75 @@
+server:
+  port: 8085
+
+spring:
+
+  application:
+    name: service-fixphone
+
+  zipkin:
+    base-url: http://localhost:9411
+
+  sleuth:
+    sampler:
+      probability: 1.0
+    zipkin:
+      base-url: http://localhost:9411/
+
+logging:
+  file:
+    name: logs/spring-boot-app.log
+  level:
+    root: INFO
+
+
+#  kafka:
+#    client:
+#      dns:
+#        lookup: use_dns_cache
+#    bootstrap-servers: localhost:9092
+#    producer:
+#      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+#      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+#      acks: -1
+#      retries: 1
+#      properties:
+#        enable.idempotence: true
+#        max.in.flight.requests.per.connection: 5
+
+
+
+
+
+  data:
+    mongodb:
+      uri: mongodb://localhost:27019/fixPhoneDb
+
+
+axon:
+  serializer:
+    general: xstream
+    message: xstream
+    events: xstream
+  axonserver:
+    connection-timeout: 10s
+    server: localhost:8024
+    token: Khanh  # Đảm bảo token chính xác
+    # context: my-context
+
+  command-handling:
+    mode: async
+
+  eventhandling:
+    processors:
+      yourProcessorName:
+        mode: tracking
+
+  #  eventstore:
+  #    mongodb:
+  #      uri: mongodb://localhost:27019/phoneDb
+  eventstore:
+    mongodb:
+      uri: mongodb://localhost:27019/fixPhoneDb
+
+  saga:
+    mode: tracking

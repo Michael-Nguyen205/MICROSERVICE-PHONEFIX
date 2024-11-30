@@ -30,3 +30,5 @@ Dự án này là một ứng dụng Spring Boot dùng để [mô tả mục đ�
 - **Giấy Phép**: Cập nhật thông tin về giấy phép dự án nếu cần.
 
 Bạn có thể điều chỉnh nội dung để phù hợp hơn với đặc thù của dự án của bạn.
+
+### Cấu Trúc Thư Mục
